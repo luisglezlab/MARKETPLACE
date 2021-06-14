@@ -1,0 +1,63 @@
+<div class="container p-4">
+    <div class="row">
+        
+        <div class="col-md-12 mx-auto">
+            {{> message}}
+            <div class="card text-center p-4">
+                <div class="card-body">
+                    <h3>Mis tiendas</h3>     
+                    <a href="/tiendas/add" class="btn btn-warning mb-3">
+                        Registrar una nueva tienda
+                    </a>
+                    <p class="text-muted">Estas son las tiendas que has registrado:</p>               
+                         
+                        {{#if tiendas}}                      
+                        {{#each tiendas}}
+                        <div class="card d-inline-block m-2 card-tienda">
+                            <div class="card-header p-2 bg-warning">
+                                <h5 class="card-title m-0">{{nombre_tienda}}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{description}}</p>
+                                <a href="{{url}}" class="btn btn-secondary btn-block">Ir a la tienda</a>
+                                <a href="/tiendas/edit/{{id_tienda}}" class="btn btn-info btn-block">Editar</a>
+
+                                <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal{{id_tienda}}">
+                                Eliminar
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal{{id_tienda}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Eliminar tienda</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <p>¿Estas seguro de eliminar esta tienda?</p>
+                                        <p class="text-muted">Tienda: {{nombre_tienda}}</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <a href="/tiendas/delete/{{id_tienda}}" class="btn btn-danger">Eliminar</a>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                        {{else}}
+                        <p>No hay tiendas registradas</p>
+                        <a href="/tiendas/add">¡Registra una!</a>
+                        {{/if}}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            {{> message}}
+            <div class="card text-center p-md-4 py-4">
+                <div class="card-body">
+                    <h3>¡{{user.nombre}}, visita una tienda ahora!</h3>
+                    <p class="text-muted">Visita una de las tiendas que solo Marketplace pone a tu disposición:</p>
+                    
+                        
+                        {{#if tiendas}}    
+                        {{#each tiendas}}
+                        <div class="card d-inline-block m-2 card-tienda">
+                            <div class="card-header p-2 bg-warning">
+                                <h5 class="card-title m-0">{{nombre_tienda}}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{description}}</p>
+                                <p class="card-text">De {{nombre}}<br/> <small class="text-muted">{{reportado}}</small> </p>
+                                <form action="/actividad" method="post">
+                                    <input type="hidden" name="tienda_visitada" value="Visitó la tienda {{nombre_tienda}}">
+                                    <input type="hidden" name="url" value="{{url}}">
+                                    <button class="btn btn-success btn-block">
+                                        ir a la tienda
+                                    </button>
+                                    <a href="/reportar/{{id}}" class="btn btn-danger btn-block">Reportar</a>
+                                </form>                                 
+                            </div>
+                        </div>
+                        {{/each}}
+                        {{else}}
+                        <p>No hay tiendas registradas</p>
+                        <a href="/tiendas/add">¡Registra una!</a>
+                        {{/if}}
+                       
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

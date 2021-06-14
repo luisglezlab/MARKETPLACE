@@ -1,0 +1,27 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-12 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="text-center mb-4">Editar tienda {{nombre_tienda}}</h5>
+                    <form action="/tiendas/edit/{{tienda.id_tienda}}" method="POST">
+                        <div class="form-group">
+                            <input type="text" maxlength="50" value="{{tienda.nombre_tienda}}" class="form-control" required name="nombre_tienda" placeholder="Nombre de la tienda" autofocus/>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="description" maxlength="80" rows="2" required class="form-control" placeholder="Descripción de la tienda">{{tienda.description}}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" maxlength="100" value="{{tienda.url}}" class="form-control" required name="url" placeholder="URL"/>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">
+                                Editar tienda
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
